@@ -3,23 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🌠 Главная страница</title>
+  <title>🌠 Главная страница | Cobalt Launcher</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    html {
-      scroll-behavior: smooth;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0ea5e9',
+            dark: '#0f172a'
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
     }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f1f5f9;
+    }
+    
     .sticky-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      transition: box-shadow 0.3s ease;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.85);
     }
+    
     .scrolled {
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
+    
     .burger-line {
       display: block;
       height: 2px;
@@ -28,28 +60,68 @@
       margin: 5px auto;
       transition: all 0.3s ease;
     }
+    
     .mobile-menu {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease-out;
     }
+    
     .mobile-menu.open {
       max-height: 300px;
     }
+    
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    
+    .btn-download {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    }
+    
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    }
+    
+    .btn-download:active {
+      transform: translateY(1px);
+    }
+    
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .glow {
+      text-shadow: 0 0 15px rgba(14, 165, 233, 0.7);
+    }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-dark text-gray-200">
 
-  <header class="bg-gray-950 shadow-md sticky-header">
+  <header class="sticky-header">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center">
-        <h1 class="text-2xl font-bold text-white">🌠 Cobalt Launcher</h1>
+      <div class="flex items-center space-x-2">
+        <div class="bg-primary p-2 rounded-lg">
+          <i class="fas fa-rocket text-white text-xl"></i>
+        </div>
+        <h1 class="text-2xl font-bold text-white">Cobalt Launcher</h1>
       </div>
       
-      <nav class="hidden md:flex space-x-6">
-        <a href="index.html" class="hover:text-gray-300">Главная</a> 
-        <a href="projects.html" class="hover:text-gray-300">Проекты</a>
-        <a href="contats.html" class="hover:text-gray-300">Контакты</a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="hover:text-primary transition-colors font-medium">Главная</a> 
+        <a href="projects.html" class="hover:text-primary transition-colors font-medium">Проекты</a>
+        <a href="contacts.html" class="hover:text-primary transition-colors font-medium">Контакты</a>
       </nav>
       
       <button id="burgerBtn" class="md:hidden text-white focus:outline-none">
@@ -61,51 +133,327 @@
     
     <div id="mobileMenu" class="mobile-menu bg-gray-950 md:hidden">
       <div class="flex flex-col px-6 pb-4">
-        <a href="index.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Главная</a> 
-        <a href="projects.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Проекты</a>
-        <a href="contats.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Контакты</a>
+        <a href="index.html" class="py-3 hover:text-primary border-b border-gray-800 transition-colors">Главная</a> 
+        <a href="projects.html" class="py-3 hover:text-primary border-b border-gray-800 transition-colors">Проекты</a>
+        <a href="contacts.html" class="py-3 hover:text-primary border-b border-gray-800 transition-colors">Контакты</a>
       </div>
     </div>
   </header>
 
-  <section class="text-center py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800" data-aos="fade-up">
-    <h2 class="text-4xl sm:text-5xl font-bold mb-6">Мы создаем будущее</h2>
-    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
-     Наша студия создает новейшие мобильные и ПК игры и приложения
-    </p>
+  <section class="relative py-24 px-4 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-dark opacity-90"></div>
+      <div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1950')] bg-cover bg-center parallax"></div>
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-dark/90 to-primary/20"></div>
+    </div>
     
-    <section>
-      <h2>Добро пожаловать в Cobalt Launcher</h2>
-      <p>Идеальный лаунчер для запуска Minecraft с модами, аккаунтами и удобной системой версий.</p>
-    </section>
+    <div class="max-w-6xl mx-auto relative z-10 text-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="inline-flex items-center mb-6 px-4 py-1.5 rounded-full bg-primary/20 text-primary">
+        <span class="h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+        <span class="text-sm font-medium">Новая версия 1.5.0</span>
+      </div>
+      
+      <h1 class="text-4xl sm:text-6xl font-bold mb-6 text-white glow" data-aos="fade-up" data-aos-delay="150">
+        Мы создаем <span class="text-primary">будущее</span>
+      </h1>
+      
+      <p class="text-xl sm:text-2xl max-w-3xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200">
+        Наша студия создает новейшие мобильные и ПК игры и приложения
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="250">
+        <a href="#download" class="btn-download px-8 py-4 rounded-full text-white font-bold text-lg inline-flex items-center">
+          <i class="fas fa-download mr-2"></i> Скачать сейчас
+        </a>
+        <a href="#features" class="px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors font-bold text-lg">
+          <i class="fas fa-info-circle mr-2"></i> Узнать больше
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>О нас</h2>
-      <p>Cobalt Launcher — это бесплатный лаунчер, созданный сообществом для игроков. Мы стремимся предоставить удобный, лёгкий и гибкий инструмент для запуска Minecraft.</p>
-      <ul>
-        <li>Поддержка Java и Bedrock версий</li>
-        <li>Forge и Fabric модлоадеры</li>
-        <li>Мультиаккаунты</li>
-        <li>Автоматическая установка Java</li>
-      </ul>
-    </section>
+  <section class="py-20 px-4" id="welcome">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2" data-aos="fade-right">
+          <div class="relative">
+            <div class="absolute -top-6 -left-6 w-full h-full rounded-2xl border-2 border-primary/30 z-0"></div>
+            <div class="bg-gray-800 rounded-2xl overflow-hidden relative z-10">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600" 
+                   alt="Cobalt Launcher" class="w-full h-auto">
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2" data-aos="fade-left">
+          <h2 class="text-3xl font-bold mb-6 text-white">
+            Добро пожаловать в <span class="text-primary">Cobalt Launcher</span>
+          </h2>
+          <p class="text-lg mb-6">
+            Идеальный лаунчер для запуска Minecraft с модами, аккаунтами и удобной системой версий. 
+            Простота использования и мощные возможности в одном решении.
+          </p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <i class="fas fa-bolt text-primary text-xl"></i>
+            </div>
+            <p class="text-gray-300">
+              <span class="font-bold text-white">Молниеносная скорость</span> - запускайте игры быстрее
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>Скачать</h2>
-      <p>Нажмите на кнопку ниже, чтобы скачать последнюю версию Cobalt Launcher:</p>
-      <a class="btn" href="#">Скачать .exe</a>
-    </section>
+  <section class="py-20 px-4 bg-gray-900/50" id="features">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4 text-white" data-aos="fade-up">
+          Мощные <span class="text-primary">возможности</span>
+        </h2>
+        <p class="text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+          Все необходимое для идеального игрового опыта
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="feature-card bg-gray-800 rounded-xl p-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+            <i class="fas fa-cogs text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-white">Forge и Fabric</h3>
+          <p class="text-gray-300">
+            Полная поддержка всех популярных модлоадеров. Легкая установка и управление.
+          </p>
+        </div>
+        
+        <div class="feature-card bg-gray-800 rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+            <i class="fas fa-users text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-white">Мультиаккаунты</h3>
+          <p class="text-gray-300">
+            Управляйте несколькими аккаунтами Minecraft. Быстрое переключение между профилями.
+          </p>
+        </div>
+        
+        <div class="feature-card bg-gray-800 rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+            <i class="fab fa-java text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-white">Автоматическая Java</h3>
+          <p class="text-gray-300">
+            Установка и обновление Java без вашего участия. Всегда актуальная версия.
+          </p>
+        </div>
+        
+        <div class="feature-card bg-gray-800 rounded-xl p-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+            <i class="fas fa-sync-alt text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-white">Обновления</h3>
+          <p class="text-gray-300">
+            Автоматическое обновление лаунчера и игровых версий. Всегда самые новые функции.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer class="bg-gray-950 py-10 text-center text-gray-400 text-sm">
-    © 2025 Atlantis Studio. Все права защищены.
+  <section class="py-20 px-4" id="about">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2" data-aos="fade-right">
+          <h2 class="text-3xl font-bold mb-6 text-white">
+            О <span class="text-primary">нас</span>
+          </h2>
+          <p class="text-lg mb-6">
+            Cobalt Launcher — это бесплатный лаунчер, созданный сообществом для игроков. 
+            Мы стремимся предоставить удобный, лёгкий и гибкий инструмент для запуска Minecraft.
+          </p>
+          <p class="text-lg mb-8">
+            Наша цель — сделать игровой процесс максимально комфортным, чтобы вы могли сосредоточиться 
+            на самом важном — наслаждении игрой.
+          </p>
+          
+          <div class="flex flex-wrap gap-4">
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-primary mr-2"></i>
+              <span>Бесплатно и без рекламы</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-primary mr-2"></i>
+              <span>Открытый исходный код</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-primary mr-2"></i>
+              <span>Активное сообщество</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2" data-aos="fade-left">
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-primary/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+              <div class="text-4xl font-bold text-primary mb-2">50K+</div>
+              <div>Активных пользователей</div>
+            </div>
+            <div class="bg-primary/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+              <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+              <div>Поддержка</div>
+            </div>
+            <div class="bg-primary/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+              <div class="text-4xl font-bold text-primary mb-2">99%</div>
+              <div>Удовлетворенных пользователей</div>
+            </div>
+            <div class="bg-primary/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+              <div class="text-4xl font-bold text-primary mb-2">1.5</div>
+              <div>Последняя версия</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-gray-900/50" id="download">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-block bg-primary/10 px-6 py-2 rounded-full mb-6" data-aos="fade-up">
+        <span class="text-primary font-bold">Скачать</span>
+      </div>
+      
+      <h2 class="text-4xl font-bold mb-6 text-white" data-aos="fade-up" data-aos-delay="100">
+        Готовы начать?
+      </h2>
+      
+      <p class="text-xl max-w-2xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="200">
+        Нажмите на кнопку ниже, чтобы скачать последнюю версию Cobalt Launcher
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="300">
+        <a href="#" class="btn-download px-8 py-4 rounded-full text-white font-bold text-lg inline-flex items-center">
+          <i class="fab fa-windows mr-2"></i> Скачать для Windows
+        </a>
+        <a href="#" class="px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors font-bold text-lg inline-flex items-center">
+          <i class="fab fa-apple mr-2"></i> Скачать для macOS
+        </a>
+        <a href="#" class="px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors font-bold text-lg inline-flex items-center">
+          <i class="fab fa-linux mr-2"></i> Скачать для Linux
+        </a>
+      </div>
+      
+      <div class="bg-gray-800 rounded-xl p-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="font-bold text-lg mb-4 text-white">Системные требования</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          <div>
+            <div class="font-bold text-primary mb-2">Минимальные</div>
+            <ul class="space-y-1">
+              <li class="flex items-center">
+                <i class="fas fa-microchip text-primary mr-2"></i>
+                <span>Процессор: Dual Core 2.0 GHz</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-memory text-primary mr-2"></i>
+                <span>Оперативная память: 4 GB</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-hdd text-primary mr-2"></i>
+                <span>Место на диске: 1 GB</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-bold text-primary mb-2">Рекомендуемые</div>
+            <ul class="space-y-1">
+              <li class="flex items-center">
+                <i class="fas fa-microchip text-primary mr-2"></i>
+                <span>Процессор: Quad Core 3.0 GHz</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-memory text-primary mr-2"></i>
+                <span>Оперативная память: 8 GB</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-hdd text-primary mr-2"></i>
+                <span>Место на диске: 2 GB</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-950 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="bg-primary p-2 rounded-lg">
+              <i class="fas fa-rocket text-white text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Cobalt Launcher</h3>
+          </div>
+          <p class="text-gray-400">
+            Лучший лаунчер для Minecraft. Бесплатно. Открытый исходный код. Сообщество.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4 text-white">Навигация</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-primary transition-colors">Главная</a></li>
+            <li><a href="projects.html" class="text-gray-400 hover:text-primary transition-colors">Проекты</a></li>
+            <li><a href="contacts.html" class="text-gray-400 hover:text-primary transition-colors">Контакты</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Документация</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4 text-white">Ресурсы</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Блог</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">FAQ</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Поддержка</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Сообщество</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4 text-white">Связаться с нами</h4>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-discord text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-telegram text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-github text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-youtube text-white"></i>
+            </a>
+          </div>
+          <p class="text-gray-400">
+            support@cobalt-launcher.ru
+          </p>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+        © 2025 Atlantis Studio. Все права защищены.
+      </div>
+    </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
-      duration: 1000,
+      duration: 800,
       once: true,
-      offset: 100
+      offset: 50
     });
 
     window.addEventListener('scroll', function() {
@@ -116,7 +464,6 @@
         header.classList.remove('scrolled');
       }
     });
-
 
     const burgerBtn = document.getElementById('burgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -148,4 +495,4 @@
     });
   </script>
 </body>
-  </html>
+      </html>
