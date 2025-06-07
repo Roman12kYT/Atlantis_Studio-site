@@ -13,7 +13,9 @@
         extend: {
           colors: {
             primary: '#0ea5e9',
-            dark: '#0f172a'
+            dark: '#0f172a',
+            minecraft: '#5fb95c',
+            launcher: '#8a6be8'
           },
           animation: {
             'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -105,11 +107,100 @@
     .glow {
       text-shadow: 0 0 15px rgba(14, 165, 233, 0.7);
     }
+    
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .video-card {
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: #1e293b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .video-card:hover .video-overlay {
+      opacity: 1;
+    }
+    
+    .play-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f172a;
+      font-size: 24px;
+      transition: all 0.3s ease;
+    }
+    
+    .play-icon:hover {
+      transform: scale(1.1);
+      background: white;
+    }
+    
+    .news-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1e293b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .minecraft-badge {
+      background: linear-gradient(135deg, #5fb95c, #3a8c38);
+    }
+    
+    .launcher-badge {
+      background: linear-gradient(135deg, #8a6be8, #6a4fd4);
+    }
+    
+    .news-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
   </style>
 </head>
 <body class="bg-dark text-gray-200">
 
-   <header class="bg-gray-950 shadow-md sticky-header">
+  <header class="bg-gray-950 shadow-md sticky-header">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center animate-fade-in">
         <h1 class="text-2xl font-bold text-white">🌠 Cobalt Launcher</h1>
@@ -148,7 +239,7 @@
   <section class="relative py-16 px-4 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-dark opacity-90"></div>
-      <div class="absolute top-0 left-0 w-full h-full bg-[url('Images/welcome_banner.png')] bg-cover bg-center parallax scale-110"></div>
+      <div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?q=80&w=2070')] bg-cover bg-center parallax scale-110"></div>
       <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-dark/90 to-primary/20"></div>
     </div>
     
@@ -156,6 +247,208 @@
       <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white glow" data-aos="fade-up" data-aos-delay="150">
         Добро Пожаловать!
       </h1>
+    </div>
+  </section>
+  
+  <!-- Новостной блок -->
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Последние новости</h2>
+        <p class="max-w-2xl mx-auto text-gray-400">Следите за обновлениями Minecraft и нашего лаунчера</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Minecraft новости (с видео) -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center mb-6">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center minecraft-badge">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h3 class="text-2xl font-bold ml-3 text-white">Minecraft Новости</h3>
+          </div>
+          
+          <div class="news-grid">
+            <!-- Видео 1 -->
+            <div class="video-card" data-aos="fade-up">
+              <div class="relative">
+                <img src="https://i.ytimg.com/vi/4dQd0X4D5Gc/maxresdefault.jpg" alt="Minecraft 1.21" class="w-full h-48 object-cover">
+                <div class="video-overlay">
+                  <div class="play-icon">
+                    <i class="fas fa-play"></i>
+                  </div>
+                </div>
+                <div class="news-tag minecraft-badge">Видео</div>
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg mb-2 text-white">Minecraft 1.21: Tricky Trials Update</h4>
+                <p class="text-gray-400 text-sm">Официальный анонс нового обновления с испытаниями и новыми мобами</p>
+                <div class="flex items-center mt-4">
+                  <span class="text-xs text-gray-500">YouTube</span>
+                  <span class="mx-2 text-gray-500">•</span>
+                  <span class="text-xs text-gray-500">12.05.2025</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Видео 2 -->
+            <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="relative">
+                <img src="https://i.ytimg.com/vi/yDBvGldZ0gU/maxresdefault.jpg" alt="Minecraft Legends" class="w-full h-48 object-cover">
+                <div class="video-overlay">
+                  <div class="play-icon">
+                    <i class="fas fa-play"></i>
+                  </div>
+                </div>
+                <div class="news-tag minecraft-badge">Видео</div>
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg mb-2 text-white">Minecraft Legends: Новый взгляд</h4>
+                <p class="text-gray-400 text-sm">Обзор новых возможностей в грядущем обновлении Legends</p>
+                <div class="flex items-center mt-4">
+                  <span class="text-xs text-gray-500">YouTube</span>
+                  <span class="mx-2 text-gray-500">•</span>
+                  <span class="text-xs text-gray-500">05.05.2025</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Видео 3 -->
+            <div class="video-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="relative">
+                <img src="https://i.ytimg.com/vi/jBst5MZ3u0A/maxresdefault.jpg" alt="Minecraft Пещеры" class="w-full h-48 object-cover">
+                <div class="video-overlay">
+                  <div class="play-icon">
+                    <i class="fas fa-play"></i>
+                  </div>
+                </div>
+                <div class="news-tag minecraft-badge">Видео</div>
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg mb-2 text-white">Обновление пещер и скал: Часть 2</h4>
+                <p class="text-gray-400 text-sm">Глубокий анализ новых биомов и генерации мира</p>
+                <div class="flex items-center mt-4">
+                  <span class="text-xs text-gray-500">YouTube</span>
+                  <span class="mx-2 text-gray-500">•</span>
+                  <span class="text-xs text-gray-500">28.04.2025</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Видео 4 -->
+            <div class="video-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="relative">
+                <img src="https://i.ytimg.com/vi/9bqkV1NlH8A/maxresdefault.jpg" alt="Minecraft Строительство" class="w-full h-48 object-cover">
+                <div class="video-overlay">
+                  <div class="play-icon">
+                    <i class="fas fa-play"></i>
+                  </div>
+                </div>
+                <div class="news-tag minecraft-badge">Видео</div>
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg mb-2 text-white">Топ-10 лучших построек 2025</h4>
+                <p class="text-gray-400 text-sm">Вдохновляющие проекты сообщества Minecraft</p>
+                <div class="flex items-center mt-4">
+                  <span class="text-xs text-gray-500">YouTube</span>
+                  <span class="mx-2 text-gray-500">•</span>
+                  <span class="text-xs text-gray-500">20.04.2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Новости лаунчера -->
+        <div>
+          <div class="flex items-center mb-6">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center launcher-badge">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3 class="text-2xl font-bold ml-3 text-white">Новости Лаунчера</h3>
+          </div>
+          
+          <div class="space-y-6">
+            <!-- Новость 1 -->
+            <div class="news-card" data-aos="fade-left" data-aos-delay="100">
+              <div class="p-5">
+                <div class="flex justify-between items-start mb-3">
+                  <h4 class="font-bold text-lg text-white">Вышла версия 2.5 лаунчера</h4>
+                  <span class="text-xs launcher-badge py-1 px-2 rounded-full">Новое</span>
+                </div>
+                <p class="text-gray-400 mb-4">Полностью переработанный интерфейс, оптимизация производительности и поддержка новых модов.</p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="far fa-calendar mr-2"></i>
+                  <span>07.06.2025</span>
+                  <span class="mx-3">|</span>
+                  <i class="far fa-user mr-2"></i>
+                  <span>Команда Cobalt</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Новость 2 -->
+            <div class="news-card" data-aos="fade-left" data-aos-delay="200">
+              <div class="p-5">
+                <div class="flex justify-between items-start mb-3">
+                  <h4 class="font-bold text-lg text-white">Обновление библиотеки модов</h4>
+                  <span class="text-xs bg-primary py-1 px-2 rounded-full">Важно</span>
+                </div>
+                <p class="text-gray-400 mb-4">Добавлено более 50 новых модов, включая OptiFine 1.21 и популярные аддоны.</p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="far fa-calendar mr-2"></i>
+                  <span>30.05.2025</span>
+                  <span class="mx-3">|</span>
+                  <i class="far fa-user mr-2"></i>
+                  <span>Команда Cobalt</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Новость 3 -->
+            <div class="news-card" data-aos="fade-left" data-aos-delay="300">
+              <div class="p-5">
+                <div class="flex justify-between items-start mb-3">
+                  <h4 class="font-bold text-lg text-white">Запущен новый сервер Atlantis</h4>
+                  <span class="text-xs bg-yellow-500 py-1 px-2 rounded-full">Событие</span>
+                </div>
+                <p class="text-gray-400 mb-4">Присоединяйтесь к нашему новому серверу с уникальными модификациями и мини-играми.</p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="far fa-calendar mr-2"></i>
+                  <span>22.05.2025</span>
+                  <span class="mx-3">|</span>
+                  <i class="far fa-user mr-2"></i>
+                  <span>Команда Cobalt</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Новость 4 -->
+            <div class="news-card" data-aos="fade-left" data-aos-delay="400">
+              <div class="p-5">
+                <div class="flex justify-between items-start mb-3">
+                  <h4 class="font-bold text-lg text-white">Конкурс дизайна скинов</h4>
+                  <span class="text-xs bg-pink-500 py-1 px-2 rounded-full">Акция</span>
+                </div>
+                <p class="text-gray-400 mb-4">Примите участие в конкурсе и выиграйте эксклюзивные призы от сообщества.</p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="far fa-calendar mr-2"></i>
+                  <span>15.05.2025</span>
+                  <span class="mx-3">|</span>
+                  <i class="far fa-user mr-2"></i>
+                  <span>Команда Cobalt</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Кнопка всех новостей -->
+          <div class="mt-8 text-center">
+            <a href="#" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1">
+              <i class="far fa-newspaper mr-2"></i>Все новости лаунчера
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -209,6 +502,17 @@
         lines[2].style.transform = 'none';
       });
     });
+    
+    // Добавим обработчики для видео-карточек
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const videoId = this.getAttribute('data-video-id');
+        if (videoId) {
+          // В реальном проекте здесь будет открытие видео
+          alert('Открываем видео: ' + videoId);
+        }
+      });
+    });
   </script>
 </body>
-</html>
+    </html>
