@@ -196,6 +196,114 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+    
+    .audio-player {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .audio-player:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .audio-player::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #5fb95c, #3a8c38);
+    }
+    
+    .audio-title {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    
+    .audio-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .audio-btn:hover {
+      background: #475569;
+      transform: scale(1.1);
+    }
+    
+    .audio-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .progress-container {
+      flex-grow: 1;
+      height: 4px;
+      background: #334155;
+      border-radius: 2px;
+      margin: 0 15px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: #5fb95c;
+      width: 30%;
+      border-radius: 2px;
+    }
+    
+    .time {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    .audio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .audio-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #5fb95c, #3a8c38);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #334155, transparent);
+      margin: 60px 0;
+    }
   </style>
 </head>
 <body class="bg-dark text-gray-200">
@@ -338,7 +446,7 @@
             <!-- Видео 4 -->
             <div class="video-card" data-aos="fade-up" data-aos-delay="300">
               <div class="relative">
-                <img src="https://www.youtube.com/watch?v=zQk5iTwjckw" alt="Minecraft Строительство" class="w-full h-48 object-cover">
+                <img src="https://i.ytimg.com/vi/9bqkV1NlH8A/maxresdefault.jpg" alt="Minecraft Строительство" class="w-full h-48 object-cover">
                 <div class="video-overlay">
                   <div class="play-icon">
                     <i class="fas fa-play"></i>
@@ -452,6 +560,224 @@
       </div>
     </div>
   </section>
+  
+  <!-- Дополнительные текстовые новости Minecraft -->
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center mb-10">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center minecraft-badge">
+          <i class="fas fa-newspaper"></i>
+        </div>
+        <h3 class="text-2xl font-bold ml-4 text-white">Дополнительные новости Minecraft</h3>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Новость 1 -->
+        <div class="news-card" data-aos="fade-up">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h4 class="font-bold text-lg text-white">Новые достижения в Minecraft 1.21</h4>
+              <span class="text-xs minecraft-badge py-1 px-2 rounded-full">Обновление</span>
+            </div>
+            <p class="text-gray-400 mb-4">В обновлении Tricky Trials добавлено 12 новых достижений, которые бросают вызов игрокам.</p>
+            <div class="flex items-center text-sm text-gray-500">
+              <i class="far fa-calendar mr-2"></i>
+              <span>04.06.2025</span>
+              <span class="mx-3">|</span>
+              <i class="far fa-user mr-2"></i>
+              <span>Mojang</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Новость 2 -->
+        <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h4 class="font-bold text-lg text-white">Minecraft Live 2025: дата и место</h4>
+              <span class="text-xs bg-blue-500 py-1 px-2 rounded-full">Событие</span>
+            </div>
+            <p class="text-gray-400 mb-4">Ежегодное мероприятие Minecraft Live пройдет 15 октября 2025 года в Стокгольме.</p>
+            <div class="flex items-center text-sm text-gray-500">
+              <i class="far fa-calendar mr-2"></i>
+              <span>01.06.2025</span>
+              <span class="mx-3">|</span>
+              <i class="far fa-user mr-2"></i>
+              <span>Mojang</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Новость 3 -->
+        <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h4 class="font-bold text-lg text-white">Рекорд постройки в Minecraft</h4>
+              <span class="text-xs bg-purple-500 py-1 px-2 rounded-full">Рекорд</span>
+            </div>
+            <p class="text-gray-400 mb-4">Команда игроков построила самую большую карту Minecraft в истории размером 1:1000.</p>
+            <div class="flex items-center text-sm text-gray-500">
+              <i class="far fa-calendar mr-2"></i>
+              <span>28.05.2025</span>
+              <span class="mx-3">|</span>
+              <i class="far fa-user mr-2"></i>
+              <span>Сообщество</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Блок с аудиоплеерами -->
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center mb-10">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center minecraft-badge">
+          <i class="fas fa-music"></i>
+        </div>
+        <h3 class="text-2xl font-bold ml-4 text-white">Minecraft Аудио и Подкасты</h3>
+      </div>
+      
+      <div class="audio-grid">
+        <!-- Аудиоплеер 1 -->
+        <div class="audio-player" data-aos="fade-up">
+          <div class="audio-icon">
+            <i class="fas fa-podcast"></i>
+          </div>
+          <div class="audio-title">Подкаст: Новости Minecraft 1.21</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">1:45</div>
+          </div>
+        </div>
+        
+        <!-- Аудиоплеер 2 -->
+        <div class="audio-player" data-aos="fade-up" data-aos-delay="50">
+          <div class="audio-icon">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <div class="audio-title">Minecraft Саундтрек: C418</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">3:22</div>
+          </div>
+        </div>
+        
+        <!-- Аудиоплеер 3 -->
+        <div class="audio-player" data-aos="fade-up" data-aos-delay="100">
+          <div class="audio-icon">
+            <i class="fas fa-microphone-alt"></i>
+          </div>
+          <div class="audio-title">Интервью с разработчиками</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">12:45</div>
+          </div>
+        </div>
+        
+        <!-- Аудиоплеер 4 -->
+        <div class="audio-player" data-aos="fade-up" data-aos-delay="150">
+          <div class="audio-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="audio-title">История Minecraft</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">24:18</div>
+          </div>
+        </div>
+        
+        <!-- Аудиоплеер 5 -->
+        <div class="audio-player" data-aos="fade-up" data-aos-delay="200">
+          <div class="audio-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <div class="audio-title">Советы для новичков</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">8:32</div>
+          </div>
+        </div>
+        
+        <!-- Аудиоплеер 6 -->
+        <div class="audio-player" data-aos="fade-up" data-aos-delay="250">
+          <div class="audio-icon">
+            <i class="fas fa-dungeon"></i>
+          </div>
+          <div class="audio-title">Секреты пещерных обновлений</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">15:07</div>
+          </div>
+        </div>
+        
+        <!-- Аудиоплеер 7 -->
+        <div class="audio-player" data-aos="fade-up" data-aos-delay="300">
+          <div class="audio-icon">
+            <i class="fas fa-redo"></i>
+          </div>
+          <div class="audio-title">Рецепты крафта для профессионалов</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">6:54</div>
+          </div>
+        </div>
+        
+        <!-- Аудиоплеер 8 -->
+        <div class="audio-player" data-aos="fade-up" data-aos-delay="350">
+          <div class="audio-icon">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div class="audio-title">Топ-10 серверов 2025 года</div>
+          <div class="audio-controls">
+            <div class="audio-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="time">18:22</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="bg-gray-950 py-6 text-center text-gray-500 text-sm">
     © 2025 Atlantis Studio. Все права защищены.
@@ -513,6 +839,33 @@
         }
       });
     });
+    
+    // Функциональность аудиоплееров
+    document.querySelectorAll('.audio-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const icon = this.querySelector('i');
+        if (icon.classList.contains('fa-play')) {
+          icon.classList.remove('fa-play');
+          icon.classList.add('fa-pause');
+          // Здесь будет логика воспроизведения
+        } else {
+          icon.classList.remove('fa-pause');
+          icon.classList.add('fa-play');
+          // Здесь будет логика паузы
+        }
+      });
+    });
+    
+    // Прогресс бар
+    document.querySelectorAll('.progress-container').forEach(container => {
+      container.addEventListener('click', function(e) {
+        const width = this.clientWidth;
+        const clickX = e.offsetX;
+        const progressBar = this.querySelector('.progress-bar');
+        const percentage = (clickX / width) * 100;
+        progressBar.style.width = percentage + '%';
+      });
+    });
   </script>
 </body>
-    </html>
+  </html>
