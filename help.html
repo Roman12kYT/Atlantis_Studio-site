@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Главная страница</title>
+  <title>Помощь | Cobalt Launcher</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="icon.png">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
@@ -14,7 +13,8 @@
         extend: {
           colors: {
             primary: '#0ea5e9',
-            dark: '#0f172a'
+            dark: '#0f172a',
+            secondary: '#1e293b'
           },
           animation: {
             'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -74,6 +74,7 @@
     
     .feature-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #334155;
     }
     
     .feature-card:hover {
@@ -106,11 +107,66 @@
     .glow {
       text-shadow: 0 0 15px rgba(14, 165, 233, 0.7);
     }
+    
+    .help-section {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(100, 116, 139, 0.2);
+    }
+    
+    .rule-item {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .rule-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #0ea5e9;
+    }
+    
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+    
+    .path-box {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: monospace;
+      display: inline-block;
+    }
+    
+    .telegram-btn {
+      background: linear-gradient(135deg, #2AABEE, #229ED9);
+      transition: all 0.3s ease;
+    }
+    
+    .telegram-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(42, 171, 238, 0.4);
+    }
   </style>
 </head>
 <body class="bg-dark text-gray-200">
 
-   <header class="bg-gray-950 shadow-md sticky-header">
+  <header class="bg-gray-950 shadow-md sticky-header">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center animate-fade-in">
         <h1 class="text-2xl font-bold text-white">🌠 Cobalt Launcher</h1>
@@ -119,7 +175,7 @@
       <nav class="hidden md:flex space-x-8">
         <a href="index.html" class="py-3 hover:text-primary transition-colors">Главная</a> 
         <a href="news.html" class="py-3 hover:text-primary transition-colors">Новости</a>
-        <a href="help.html" class="py-3 hover:text-primary transition-colors">Помощь</a>
+        <a href="help.html" class="py-3 text-primary font-semibold transition-colors">Помощь</a>
         <a href="libraly.html" class="py-3 hover:text-primary transition-colors">Библиотека</a>
         <a href="wiki.html" class="py-3 hover:text-primary transition-colors">Вики</a>
         <a href="projects.html" class="py-3 hover:text-primary transition-colors">Проекты</a>
@@ -137,7 +193,7 @@
       <div class="flex flex-col px-6 pb-4">
         <a href="index.html" class="py-3 hover:text-primary transition-colors">Главная</a> 
         <a href="news.html" class="py-3 hover:text-primary transition-colors">Новости</a>
-        <a href="help.html" class="py-3 hover:text-primary transition-colors">Помощь</a>
+        <a href="help.html" class="py-3 text-primary font-semibold transition-colors">Помощь</a>
         <a href="libraly.html" class="py-3 hover:text-primary transition-colors">Библиотека</a>
         <a href="wiki.html" class="py-3 hover:text-primary transition-colors">Вики</a>
         <a href="projects.html" class="py-3 hover:text-primary transition-colors">Проекты</a>
@@ -146,18 +202,238 @@
     </div>
   </header>
 
-  <section class="relative py-32 px-4 overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-dark opacity-90"></div>
-      <div class="absolute top-0 left-0 w-full h-full bg-[url('Index/banner.png')] bg-cover bg-center parallax scale-110"></div>
-      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-dark/90 to-primary/20"></div>
-    </div>
-    
-    <div class="max-w-6xl mx-auto relative z-10 text-center" data-aos="fade-up" data-aos-delay="100">
-      <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white glow" data-aos="fade-up" data-aos-delay="150">
-        Добро Пожаловать!
-      </h1>
-     </div>
+  <section class="py-16 px-4 sm:px-6 relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h1 class="text-4xl font-bold mb-4 text-white">Помощь по логам и краш-репортам</h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">Узнайте, как работать с логами и краш-отчетами для решения проблем в Cobalt Launcher</p>
+      </div>
+      
+      <!-- Что такое логи -->
+      <div class="help-section p-6 mb-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center mb-6">
+          <div class="bg-primary p-3 rounded-lg mr-4">
+            <i class="fas fa-file-alt text-white text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-white">ЧТО ТАКОЕ ЛОГИ?</h2>
+        </div>
+        
+        <div class="pl-16">
+          <p class="mb-4 text-gray-200">
+            Логи (logs) - это записи о событиях, которые происходят в системе. Они могут отслеживать действия пользователя, 
+            а также сохранять информацию о произошедших исключениях, ошибках и других важных событиях. 
+            Это позволяет системным администраторам правильно идентифицировать и устранить проблемы, 
+            которые могут возникнуть в системе.
+          </p>
+          
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
+              <i class="fas fa-folder-open mr-3 text-primary"></i> Где хранятся логи?
+            </h3>
+            <p class="mb-2">Путь к логам Minecraft:</p>
+            <div class="path-box mb-6">
+              /AppData/Roaming/.Cobalt_Launcher/logs
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Что такое краш-репорты -->
+      <div class="help-section p-6 mb-12" data-aos="fade-up" data-aos-delay="150">
+        <div class="flex items-center mb-6">
+          <div class="bg-red-500 p-3 rounded-lg mr-4">
+            <i class="fas fa-bug text-white text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-white">ЧТО ТАКОЕ КРАШ-РЕПОРТЫ?</h2>
+        </div>
+        
+        <div class="pl-16">
+          <p class="mb-4 text-gray-200">
+            Краш-репорты (crash_reports) - это дебаг-отчеты, которые используются для отслеживания и диагностики 
+            проблем с программным обеспечением или оборудованием. Они обычно содержат подробную информацию об 
+            исключениях, ошибках, которые произошли и стеке вызовов, который вел к исключению или ошибке. 
+            Они обычно собираются программным обеспечением для диагностики и предоставляются разработчикам 
+            для исследования ошибок и исправления.
+          </p>
+          
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
+              <i class="fas fa-folder-open mr-3 text-red-400"></i> Где хранятся краш-репорты?
+            </h3>
+            <p class="mb-2">Путь к краш-репортам Minecraft:</p>
+            <div class="path-box mb-6">
+              /AppData/Roaming/.Cobalt_Launcher/crash-reports
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Правила обращения за помощью -->
+      <div class="help-section p-6 mb-12" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center mb-6">
+          <div class="bg-yellow-500 p-3 rounded-lg mr-4">
+            <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-white">ПРАВИЛА ОБРАЩЕНИЯ ЗА ПОМОЩЬЮ</h2>
+        </div>
+        
+        <div class="pl-16">
+          <ol class="space-y-4">
+            <li class="rule-item">Если вы будете грубить, оскорблять, помощь вам не будет оказана.</li>
+            <li class="rule-item">Пишите чётко и ясно.</li>
+            <li class="rule-item">С модифицированными версиями не помогаем. Обращайтесь к разработчику модификации.</li>
+            <li class="rule-item">Обязательно указывайте, в какой версии лаунчера случился краш (компьютерная/мобильная).</li>
+          </ol>
+          
+          <div class="mt-8 bg-dark/50 p-5 rounded-xl border border-yellow-700/50">
+            <h3 class="text-xl font-semibold text-yellow-300 mb-3 flex items-center">
+              <i class="fas fa-info-circle mr-2"></i> Зачем нам нужны ваши логи и краш-репорты?
+            </h3>
+            <p class="text-gray-200">
+              Логи и репорты нужны чтобы понять причину вашей проблемы, без них мы этого не сможем!
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Как читать краш-репорты -->
+      <div class="help-section p-6 mb-12" data-aos="fade-up" data-aos-delay="250">
+        <div class="flex items-center mb-6">
+          <div class="bg-green-500 p-3 rounded-lg mr-4">
+            <i class="fas fa-book-open text-white text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-white">КАК ЧИТАТЬ КРАШ-РЕПОРТЫ?</h2>
+        </div>
+        
+        <div class="pl-16">
+          <div class="mb-6">
+            <div class="flex items-start mb-4">
+              <span class="step-badge">1</span>
+              <p class="text-gray-200 flex-1">
+                Для работы с краш-репортами вы можете использовать любой текстовой редактор, 
+                но для удобного использования советуем использовать редактор с поддержкой строк кода 
+                (Пример: <span class="text-blue-400">Visual Studio Code</span>)
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-start mb-4">
+              <span class="step-badge">2</span>
+              <p class="text-gray-200 flex-1">
+                Нам потребуется только начало документа, в котором чередуются строки, начинающиеся на <code class="bg-gray-800 px-2 py-1 rounded">at</code>
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-start mb-4">
+              <span class="step-badge">3</span>
+              <p class="text-gray-200 flex-1">
+                Нужно знать правило написания краш-репорта. Мы читаем строки <span class="text-red-400 font-semibold">снизу - вверх</span> 
+                (То есть самая последняя <code class="bg-gray-800 px-2 py-1 rounded">at</code> является самой первой.)
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-start mb-4">
+              <span class="step-badge">4</span>
+              <div class="flex-1">
+                <p class="text-gray-200 mb-2">
+                  Если вы играете с модами и игра не запускается/вылетает, то в краш-логе можно найти название конфликтного мода. 
+                </p>
+                <p class="text-gray-200">
+                  Например краш вызвал мод JEI, это можно понять по строчкам <code class="bg-gray-800 px-2 py-1 rounded">at mezz.jei</code>.
+                </p>
+                <p class="text-gray-200 mt-2">
+                  Если краш произошел в ванильном майнкрафте, то в краш-логе будет указана конкретная причина.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-start">
+              <span class="step-badge">5</span>
+              <div class="flex-1">
+                <p class="text-gray-200 mb-2">
+                  Если вы не понимаете, что случилось и хотите отправить краш-лог в интернет, то не стоит копировать 
+                  нижнюю часть Краш-лога, начинающуюся <code class="bg-gray-800 px-2 py-1 rounded">-- Initialization --</code>.
+                </p>
+                <p class="text-gray-300 bg-red-900/30 p-3 rounded-lg border border-red-700 mt-3">
+                  <i class="fas fa-exclamation-circle mr-2 text-red-300"></i> Почему? В этой части указываются все ваши данные, 
+                  такие как: Настройки системы, конфигурация вашего лаунчера, ваш ник и вся информация по игровому миру. 
+                  Несмотря на это там же указывается список модов, но он не важен для нахождения ошибки.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Как читать логи -->
+      <div class="help-section p-6 mb-12" data-aos="fade-up" data-aos-delay="300">
+        <div class="flex items-center mb-6">
+          <div class="bg-purple-500 p-3 rounded-lg mr-4">
+            <i class="fas fa-scroll text-white text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-white">КАК ЧИТАТЬ ЛОГИ?</h2>
+        </div>
+        
+        <div class="pl-16">
+          <div class="mb-6">
+            <div class="flex items-start mb-4">
+              <span class="step-badge">1</span>
+              <p class="text-gray-200 flex-1">
+                Для работы с логами вы можете использовать любой текстовой редактор, 
+                но для удобного использования советуем использовать редактор с поддержкой строк кода 
+                (Пример: <span class="text-blue-400">Visual Studio Code</span>)
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-start mb-4">
+              <span class="step-badge">2</span>
+              <p class="text-gray-200 flex-1">
+                Нужно знать правило написания лога. Мы читаем строки <span class="text-red-400 font-semibold">снизу - вверх</span>.
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div class="flex items-start mb-4">
+              <span class="step-badge">3</span>
+              <p class="text-gray-200 flex-1">
+                В начале каждого действия в квадратных скобках будет указано время когда это происходило.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Кто может помочь -->
+      <div class="help-section p-6 mb-12" data-aos="fade-up" data-aos-delay="350">
+        <div class="flex items-center mb-6">
+          <div class="bg-blue-500 p-3 rounded-lg mr-4">
+            <i class="fas fa-hands-helping text-white text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-white">КТО МОЖЕТ ПОМОЧЬ?</h2>
+        </div>
+        
+        <div class="pl-16">
+          <p class="mb-6 text-gray-200">
+            Люди с должностью "Помощник" в нашем Telegram. Чтобы мы помогли пишите в тему 
+            <span class="bg-blue-900/40 px-2 py-1 rounded font-medium">Нужна помощь?</span>. 
+            <span class="text-red-400 font-semibold">В ДРУГИХ ТЕМАХ НЕ ПОМОГАЕМ!</span>
+          </p>
+          
+          <a href="https://t.me/atlantis_studio_chat" class="telegram-btn inline-flex items-center px-6 py-3 rounded-lg text-white font-semibold">
+            <i class="fab fa-telegram-plane mr-3 text-xl"></i> Перейти в Telegram-чат
+          </a>
+        </div>
+      </div>
     </div>
   </section>
   
@@ -212,4 +488,4 @@
     });
   </script>
 </body>
-    </html>
+  </html>
